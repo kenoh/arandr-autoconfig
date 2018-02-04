@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import click
+import tendo.singleton
 import time
 import os.path
 import subprocess
@@ -52,6 +53,7 @@ def loop(post):
 @click.option("--post", default=None, help="program to run after a change")
 @click.command()
 def main(post):
+	instance = tendo.singleton.SingleInstance()
 	print("startup:", current_connected_displays())
 	loop(post)
 
