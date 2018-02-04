@@ -10,7 +10,7 @@ def parse_xrandr_output(text):
 	pattern = re.compile(r"^([^ ]+) connected")
 	ret = filter(lambda x: pattern.match(x), text.decode('utf-8').splitlines())
 	ret = map(lambda x: pattern.match(x).group(1), ret)
-	return tuple(ret)
+	return sorted(ret)
 
 def current_connected_displays():
 	proc = subprocess.run(["xrandr"], stdout=subprocess.PIPE)
